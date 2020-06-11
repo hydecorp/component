@@ -6,7 +6,8 @@
   "module": "lib/index.js",
   "files": [
     "src",
-    "lib"
+    "lib",
+    "types"
   ],
   "publishConfig": {
     "access": "public"
