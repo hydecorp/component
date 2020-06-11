@@ -8,9 +8,10 @@
     "module": "esnext",
     "target": "esnext",
     "outDir": "dist",
+    "sourceMap": true,
   },
   "include": [
-    "src/index.ts",
-    "types/*.d.ts",
+    "src/**/*",
+    "typings"
   ],
 }
