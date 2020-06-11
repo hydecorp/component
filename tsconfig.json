@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "es2018"
+    ],
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "esnext",
+    "outDir": "dist",
+  },
+  "include": [
+    "src/index.ts",
+    "types/*.d.ts",
+  ],
+}
