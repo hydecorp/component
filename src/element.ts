@@ -28,6 +28,11 @@ export class RxLitElement extends LitElement {
     }
     this.firstUpdate = false;
   }
+
+  fireEvent<T>(name: string, eventInitDict?: CustomEventInit<T>) {
+    this.dispatchEvent(new CustomEvent(name, eventInitDict));
+    this.dispatchEvent(new CustomEvent(`${this.tagName.toLowerCase()}-${name}`, eventInitDict));
+  }
 }
 
 export function applyMixins<T>(derivedCtor: Constructor<T>, baseCtors: Constructor<any>[]) {
