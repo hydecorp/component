@@ -16,7 +16,7 @@ export function createMutationObservable(el: HTMLElement, options?: MutationObse
   });
 }
 
-export function createIntersectionObservable(els: HTMLElement|HTMLElement[], options: IntersectionObserverInit): Observable<IntersectionObserverEntry[]> {
+export function createIntersectionObservable(els: HTMLElement|HTMLElement[], options?: IntersectionObserverInit): Observable<IntersectionObserverEntry[]> {
   return Observable.create((obs: PartialObserver<IntersectionObserverEntry[]>) => {
     const observer = new IntersectionObserver(xs => obs.next(xs), options);
 
