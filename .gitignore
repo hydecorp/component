@@ -17,4 +17,4 @@ node_modules
 *.tgz
 
 # Build artifacts
-lib
+#<removed temporarily>lib
