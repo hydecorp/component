@@ -2,6 +2,7 @@
   "name": "@hydecorp/component",
   "version": "1.0.0-alpha.2",
   "description": "",
+  "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
   "files": [
@@ -15,8 +16,8 @@
   "scripts": {
     "clean": "rm -rf lib",
     "test": "exit 0",
-    "build": "tsc -d --outDir lib",
-    "watch": "tsc -d --outDir lib -w",
+    "build": "tsc --outDir lib",
+    "watch": "tsc --outDir lib -w",
     "preversion": "sed -i '' -E 's:^(lib)$:#<removed temporarily>\\1:' .gitignore",
     "version": "npm run build && git add .",
     "postversion": "sed -i '' -E 's:^#<removed temporarily>(lib)$:\\1:' .gitignore && git rm --cached -r lib && git add . && git commit -m 'Restore preversion .gitignore'",
