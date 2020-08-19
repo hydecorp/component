@@ -29,6 +29,7 @@ export function fromMediaQuery(mql: MediaQueryList): Observable<MediaQueryListEv
 
 export function tween(easingFn: (t: number, b: number, c: number, d: number, s?: number) => number, b: number, c: number, d: number, s?: number): Observable<number> {
   return animationFrames().pipe(
+    map(({ elapsed }) => elapsed),
     takeWhile(t => t < d),
     endWith(d),
     map(t => easingFn(t, b, c, d, s)),

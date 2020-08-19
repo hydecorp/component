@@ -18,14 +18,11 @@
     "test": "exit 0",
     "build": "tsc --outDir lib",
     "watch": "tsc --outDir lib -w",
-    "preversion": "sed -i '' -E 's:^(lib)$:#<removed temporarily>\\1:' .gitignore",
-    "version": "npm run build && git add .",
-    "postversion": "sed -i '' -E 's:^#<removed temporarily>(lib)$:\\1:' .gitignore && git rm --cached -r lib && git add . && git commit -m 'Restore preversion .gitignore'",
     "prepack": "npm run clean && npm run build"
   },
   "dependencies": {
     "lit-element": "^2.3.1",
-    "rxjs": "^7.0.0-beta.0"
+    "rxjs": "^7.0.0-beta.4"
   },
   "author": "Florian Klampfer <mail@qwtel.com> (https://qwtel.com/)",
   "license": "MIT"
