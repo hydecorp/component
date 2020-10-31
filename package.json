@@ -8,7 +8,8 @@
   "files": [
     "src",
     "lib",
-    "typings"
+    "typings",
+    "tsconfig.json"
   ],
   "publishConfig": {
     "access": "public"
@@ -21,8 +22,8 @@
     "prepack": "npm run clean && npm run build"
   },
   "dependencies": {
-    "lit-element": "^2.3.1",
-    "rxjs": "^7.0.0-beta.4"
+    "lit-element": "^2.4.0",
+    "rxjs": "^7.0.0-beta.8"
   },
   "author": "Florian Klampfer <mail@qwtel.com> (https://qwtel.com/)",
   "license": "MIT"
