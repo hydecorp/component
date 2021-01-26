@@ -1,6 +1,6 @@
 {
   "name": "@hydecorp/component",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "description": "",
   "type": "module",
   "main": "lib/index.js",
