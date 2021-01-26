@@ -14,19 +14,19 @@ export class RxLitElement extends LitElement {
     this.$connected.next(false);
   }
 
-  private firstUpdate: boolean;
+  #firstUpdate!: boolean;
 
-  $: {};
+  $: any = {};
 
   firstUpdated() {
-    this.firstUpdate = true;
+    this.#firstUpdate = true;
   }
 
   updated(changedProperties: Map<string, any>) {
-    if (!this.firstUpdate) for (const prop of changedProperties.keys()) {
-      if (prop in this.$) this.$[prop].next(this[prop]);
+    if (!this.#firstUpdate) for (const prop of changedProperties.keys()) {
+      if (prop in this.$) this.$[prop].next((<any>this)[prop]);
     }
-    this.firstUpdate = false;
+    this.#firstUpdate = false;
   }
 
   fireEvent<T>(name: string, eventInitDict?: CustomEventInit<T>) {

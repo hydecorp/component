@@ -1,12 +1,12 @@
-import { Observable, PartialObserver, animationFrames } from "rxjs";
+import { Observable, animationFrames } from "rxjs";
 import { map, takeWhile, endWith } from "rxjs/operators";
 
 export function fetchRx(input: RequestInfo, init?: RequestInit): Observable<Response> {
-  return Observable.create((observer: PartialObserver<Response>) => {
+  return new Observable(observer => {
     const controller = new AbortController();
     const { signal } = controller;
 
-    let response = null;
+    let response: Response | null = null;
     fetch(input, { ...init, signal })
       .then(r => {
         response = r;
@@ -20,10 +20,12 @@ export function fetchRx(input: RequestInfo, init?: RequestInit): Observable<Resp
 }
 
 export function fromMediaQuery(mql: MediaQueryList): Observable<MediaQueryListEvent> {
-  return Observable.create((o: PartialObserver<MediaQueryListEvent>) => {
+  return new Observable(o => {
     const l = o.next.bind(o);
-    mql.addListener(l);
-    return () => mql.removeListener(l);
+    if (mql.onchange) mql.addEventListener('change', l); else mql.addListener(l);
+    return () => {
+      if (mql.onchange) mql.removeEventListener('change', l); else mql.removeListener(l);
+    }
   });
 }
 

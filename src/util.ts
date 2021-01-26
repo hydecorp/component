@@ -13,10 +13,10 @@ export function getScrollTop() {
   return window.pageYOffset || document.body.scrollTop;
 }
 
-export const matches = (el: Element, selector: string) => (el.matches || el['msMatchesSelector']).call(el, selector);
+export const matches = (el: Element, selector: string) => (el.matches || (<any>el)['msMatchesSelector']).call(el, selector);
 
 // Checks if this element or any of its parents matches a given `selector`.
-export function matchesAncestors(el: Element, selector: string): Element | null {
+export function matchesAncestors(el: Element | null, selector: string): Element | null {
   let curr = el;
   while (curr != null) {
     if (matches(curr, selector)) return curr;
@@ -33,8 +33,8 @@ type Resolver<T> = (value: T | PromiseLike<T>) => void;
 type Rejector = (reason?: any) => void;
 type ResolvablePromise<T> = Promise<T> & { resolve: Resolver<T>, reject: Rejector }
 export function createResolvablePromise<T>(): ResolvablePromise<T> {
-  let res: Resolver<T>
-  let rej: Rejector;
+  let res!: Resolver<T>;
+  let rej!: Rejector;
   const promise = new Promise((r, s) => (res = r, rej = s)) as ResolvablePromise<T>;
   promise.resolve = res;
   promise.reject = rej;
